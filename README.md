@@ -1,3 +1,4 @@
+Added support for event-name and event-name-type color on calendar day level
 # Angular Bootstrap Calendar
 
 ## Table of contents
