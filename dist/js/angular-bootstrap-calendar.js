@@ -166,6 +166,11 @@ angular.module('mwl.calendar')
           }
         }
 
+
+        var currentEvents = eventsWithIds.filter(function(event) {
+            return self.eventIsInPeriod(event.starts_at, event.ends_at, startOfMonth.clone().startOf('day'), startOfMonth.clone().endOf('day'));
+          })
+
         buildRow[getWeekDayIndex(startOfMonth)] = {
           label: startOfMonth.date(),
           inMonth: true,
@@ -173,12 +178,11 @@ angular.module('mwl.calendar')
           date: startOfMonth.clone(),
           events: eventsWithIds.filter(function(event) {
             return self.eventIsInPeriod(event.starts_at, event.ends_at, startOfMonth.clone().startOf('day'), startOfMonth.clone().endOf('day'));
-          })
+          }),
+          eventType: (currentEvents.length > 0)?currentEvents[0].type : 'default'
         };
 
-        /*** Anil ***/
-        buildRow[getWeekDayIndex(startOfMonth)].eventType = (buildRow[getWeekDayIndex(startOfMonth)].events.length>0)?buildRow[getWeekDayIndex(startOfMonth)].events[0].type : 'default'
-
+        
         if (i == numberOfDaysInMonth) {
           var weekdayIndex = getWeekDayIndex(startOfMonth);
           var postfillMonth = startOfMonth.clone();
