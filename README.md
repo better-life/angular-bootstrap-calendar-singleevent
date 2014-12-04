@@ -1,3 +1,9 @@
+Added support for event-name and event-name-type color on calendar day level
+event json can contain following additional properties:
+
+badge:
+name:
+
 # Angular Bootstrap Calendar
 
 ## Table of contents
